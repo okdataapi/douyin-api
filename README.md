@@ -2,7 +2,7 @@
 
 **抖音数据 API · 抖音评论采集 · 抖音视频数据接口 · 抖音用户主页 · 抖音热搜榜 · 星图达人数据 · 巨量算数指数。**
 
-这个仓库是 [okdata](https://okdata.online/zh/?src=gh-douyin-api) 的抖音接口示例：38 个接口在线可用，一个 API Key 调用，按次计费（$0.002 起），参数错误这类还没请求数据源就被拦下的调用不扣费。不用登录平台账号，不用 Cookie，不开浏览器，所以也不存在账号被风控的问题。
+这个仓库是 [okdata](https://okdata.online/zh/?src=gh-douyin-api) 的抖音接口示例：38 个接口在线可用，一个 API Key 调用，按次计费（$0.002 起），不用订阅。不用登录平台账号，不用 Cookie，不开浏览器，所以也不存在账号被风控的问题。
 
 [免费注册拿 Key（送 $0.1 试用额度）](https://okdata.online/zh/signup/?src=gh-douyin-api) · [全部接口文档](https://okdata.online/zh/apis/?src=gh-douyin-api) · [接入 AI（MCP）](https://okdata.online/zh/mcp/?src=gh-douyin-api)
 
@@ -46,8 +46,8 @@
 | [抖音星图达人转化能力](https://okdata.online/zh/apis/douyin/xingtu/creators/conversion/get/) | 按星图达人 ID 取这位抖音达人带货视频的转化数据：相关视频数和播放中位数、推荐商品数，以及销售额、千次播放成交额、商品价格、点击成本、组件点击次数和点击率所在的区间。区间是星图给的文字，不是精确值；很多达人（包括带货多的）没有区间，完全没有带货数据的达人返回“不存在”。 | $0.004 / 次 | `GET /v1/douyin/xingtu/creators/conversion/get` |
 | [抖音星图营销活动日历](https://okdata.online/zh/apis/douyin/xingtu/campaigns/list/) | 取星图营销日历上和一段时间有交集的活动：平台大事件、电商节点、情绪节点、创意营销和行业活动，每个带名称、介绍、类型、阶段、招商期和活动期。一次给全。 | $0.004 / 次 | `GET /v1/douyin/xingtu/campaigns/list` |
 | [抖音星图视频数据报告](https://okdata.online/zh/apis/douyin/xingtu/videos/get/) | 按视频 ID 或链接取星图对一条抖音视频的数据报告：播放、点赞、评论、分享和收藏，加上完播率、互动率、时长、作者粉丝数和作者的星图达人 ID（可接着查达人数据）。只有星图收录的视频才有，多是星图达人的视频。 | $0.004 / 次 | `GET /v1/douyin/xingtu/videos/get` |
-| [抖音用户视频（备用版）](https://okdata.online/zh/apis/douyin/backup/users/videos/list/) | 抖音用户视频（douyin.users.videos.list）的备用版，原接口取不到时改调：账号发布的视频，从新到旧，每页 20 条，走另一条数据通道，价格略高。文案、作者、点赞、评论、分享、收藏和发布时间。账号不存在时和没有视频一样，返回空结果，不报 404。 | $0.0025 / 次 | `GET /v1/douyin/backup/users/videos/list` |
-| [抖音视频搜索（备用版）](https://okdata.online/zh/apis/douyin/backup/videos/search/) | 抖音视频搜索（douyin.videos.search）的备用版，原接口取不到时改调：走另一条数据通道按关键词搜视频，可按综合、最新或最多点赞排，可只要最近一天、一周或半年内的。文案、作者、点赞、评论、分享、收藏和发布时间。 | $0.03 / 次 | `GET /v1/douyin/backup/videos/search` |
+| [抖音用户视频（备用版）](https://okdata.online/zh/apis/douyin/backup/users/videos/list/) | 抖音用户视频（douyin.users.videos.list）的备用版，原接口取不到时改调：账号发布的视频，从新到旧，每页 20 条，价格略高。文案、作者、点赞、评论、分享、收藏和发布时间。账号不存在时和没有视频一样，返回空结果，不报 404。 | $0.0025 / 次 | `GET /v1/douyin/backup/users/videos/list` |
+| [抖音视频搜索（备用版）](https://okdata.online/zh/apis/douyin/backup/videos/search/) | 抖音视频搜索（douyin.videos.search）的备用版，原接口取不到时改调：按关键词搜视频，可按综合、最新或最多点赞排，可只要最近一天、一周或半年内的。文案、作者、点赞、评论、分享、收藏和发布时间。 | $0.03 / 次 | `GET /v1/douyin/backup/videos/search` |
 
 ## 快速开始
 
@@ -94,7 +94,7 @@ Cursor、Cherry Studio、WorkBuddy 等支持远程 MCP 的客户端：
 
 **要登录平台账号吗？** 不用。数据是公开内容，okdata 在服务端获取，你的账号完全不参与。
 
-**怎么收费？** 每个接口单独定价，表里写的就是一次调用的价格；按条计费的接口按实际返回条数算。请求到了数据源的调用，返回为空、查不到或出错也照常计费（按条计费的按 1 条算）；参数错误这类还没请求数据源就被拦下的不扣费。新账号送 $0.1 试用额度，之后按需充值，没有订阅。价格页：https://okdata.online/zh/pricing/
+**怎么收费？** 每个接口单独定价，表里写的就是一次调用的价格；按条计费的接口按实际返回条数算。新账号送 $0.1 试用额度，之后 $10 起充，余额不过期，没有订阅。价格页：https://okdata.online/zh/pricing/ ，计费说明：https://okdata.online/zh/docs/billing/
 
 **和官方开放平台有什么区别？** 官方开放平台只能读授权给你的账号自己的数据，而且要企业资质和审核；这里是平台上任何人都能看到的公开数据，比如搜索结果、别人的笔记或视频、评论、热榜。
 
